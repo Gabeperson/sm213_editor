@@ -2272,9 +2272,9 @@ dependencies = [
 
 [[package]]
 name = "rustix"
-version = "0.38.40"
+version = "0.38.41"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99e4ea3e1cdc4b559b8e5650f9c8e5998e3e5c1343b4eaf034565f32318d63c0"
+checksum = "d7f649912bc1495e167a6edee79151c84b1bad49748cb4f1f1167f459f6224f6"
 dependencies = [
  "bitflags 2.6.0",
  "errno",
@@ -2404,7 +2404,7 @@ dependencies = [
 [[package]]
 name = "sm213_parser"
 version = "0.1.0"
-source = "git+https://github.com/Gabeperson/sm213_parser.git#cc240cb5849308c790ffca2ef9b73eaa0751a852"
+source = "git+https://github.com/Gabeperson/sm213_parser.git#1e0518db0f35d2aa7c0838530e495d15e4059ef1"
 dependencies = [
  "parser",
 ]
