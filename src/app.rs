@@ -25,7 +25,7 @@ impl Default for App {
 
 impl App {
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
-        cc.egui_ctx.set_theme(egui::Theme::Dark);
+        // cc.egui_ctx.set_theme(egui::Theme::Dark);
         if let Some(storage) = cc.storage {
             return eframe::get_value(storage, eframe::APP_KEY).unwrap_or_default();
         }
@@ -33,14 +33,40 @@ impl App {
     }
 }
 
-fn highlight_inner(code: &str, font_id: &egui::FontId, send: Sender<ParseError>) -> LayoutJob {
-    let reg = TextFormat::simple(font_id.clone(), Color32::LIGHT_BLUE);
-    let instruction = TextFormat::simple(font_id.clone(), Color32::from_rgb(0x60, 0xa0, 0xd0));
-    let paren = TextFormat::simple(font_id.clone(), Color32::from_rgb(0xfc, 0xd3, 0x03));
-    let white = TextFormat::simple(font_id.clone(), Color32::WHITE);
+fn highlight_inner(
+    code: &str,
+    dark_mode: bool,
+    font_id: &egui::FontId,
+    send: Sender<ParseError>,
+) -> LayoutJob {
+    let reg = if dark_mode {
+        TextFormat::simple(font_id.clone(), Color32::LIGHT_BLUE)
+    } else {
+        TextFormat::simple(font_id.clone(), Color32::from_rgb(247, 79, 242))
+    };
+    let instruction = if dark_mode {
+        TextFormat::simple(font_id.clone(), Color32::from_rgb(0x60, 0xa0, 0xd0))
+    } else {
+        TextFormat::simple(font_id.clone(), Color32::BLUE)
+    };
+    let bg_opposite = if dark_mode {
+        TextFormat::simple(font_id.clone(), Color32::WHITE)
+    } else {
+        TextFormat::simple(font_id.clone(), Color32::BLACK)
+    };
     let number = TextFormat::simple(font_id.clone(), Color32::from_rgb(13, 170, 2));
     let comment = TextFormat::simple(font_id.clone(), Color32::from_rgb(0x50, 0x80, 0x50));
-    let label = TextFormat::simple(font_id.clone(), Color32::from_rgb(255, 230, 110));
+    let label = if dark_mode {
+        TextFormat::simple(font_id.clone(), Color32::from_rgb(255, 230, 110))
+    } else {
+        // TextFormat::simple(font_id.clone(), Color32::from_rgb(175, 181, 0))
+        TextFormat::simple(font_id.clone(), Color32::DARK_GREEN)
+    };
+    let paren = if dark_mode {
+        TextFormat::simple(font_id.clone(), Color32::from_rgb(0xfc, 0xd3, 0x03))
+    } else {
+        number.clone()
+    };
     let mut job = LayoutJob::default();
     let mut lexer = Token::lexer(code);
     while let Some(token) = lexer.next() {
@@ -50,18 +76,18 @@ fn highlight_inner(code: &str, font_id: &egui::FontId, send: Sender<ParseError>)
                 Token::Reg => reg.clone(),
                 Token::HexNumber | Token::DecNumber => number.clone(),
                 Token::Dollar => number.clone(),
-                Token::Comma => white.clone(),
+                Token::Comma => bg_opposite.clone(),
                 Token::Comment => comment.clone(),
                 Token::DoubleIndirect => paren.clone(),
                 Token::Label | Token::Colon => label.clone(),
                 // instructions like ld, st, etc.
                 _ => instruction.clone(),
             },
-            Err(_) => white.clone(),
+            Err(_) => bg_opposite.clone(),
         };
         job.append(lexer.slice(), 0.0, format)
     }
-    job.append(lexer.remainder(), 0.0, white.clone());
+    job.append(lexer.remainder(), 0.0, bg_opposite.clone());
     let parsed = sm213_parser::parse(code);
     match parsed {
         Ok(_program) => {
@@ -139,15 +165,16 @@ fn highlight(
     style: &egui::Style,
     code: &str,
 ) -> (LayoutJob, Option<ParseError>) {
-    impl egui::util::cache::ComputerMut<(&str, &egui::FontId), (LayoutJob, Option<ParseError>)>
+    impl
+        egui::util::cache::ComputerMut<(&str, bool, &egui::FontId), (LayoutJob, Option<ParseError>)>
         for Highlighter
     {
         fn compute(
             &mut self,
-            (code, font_id): (&str, &egui::FontId),
+            (code, dark_mode, font_id): (&str, bool, &egui::FontId),
         ) -> (LayoutJob, Option<ParseError>) {
             let (send, recv) = channel();
-            let job = highlight_inner(code, font_id, send);
+            let job = highlight_inner(code, dark_mode, font_id, send);
             match recv.try_recv() {
                 Ok(e) => (job, Some(e)),
                 Err(e) => match e {
@@ -163,7 +190,12 @@ fn highlight(
         .override_font_id
         .clone()
         .unwrap_or_else(|| egui::TextStyle::Monospace.resolve(style));
-    ctx.memory_mut(|mem| mem.caches.cache::<HighlightCache>().get((code, &font_id)))
+    let dark_mode = style.visuals.dark_mode;
+    ctx.memory_mut(|mem| {
+        mem.caches
+            .cache::<HighlightCache>()
+            .get((code, dark_mode, &font_id))
+    })
 }
 #[derive(Default)]
 struct LineNumberer;
@@ -202,6 +234,7 @@ impl eframe::App for App {
                 if ui.button("Decrease font size").clicked() {
                     self.monospace_size -= 1.;
                 }
+                egui::widgets::global_theme_preference_buttons(ui);
             });
         });
 
