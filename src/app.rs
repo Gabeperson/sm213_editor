@@ -254,11 +254,12 @@ impl eframe::App for App {
                     sm213_parser::SpanOrPos::Span(s) => s.start,
                     sm213_parser::SpanOrPos::Pos(p) => p,
                 };
-                let err_msg = match find_line_and_column(&self.code, start) {
-                    Some((line, column)) => format!("Error at {line}:{column}:\n{message}"),
-                    // shouldn't be reached here
-                    None => format!("Error occured: {message}"),
-                };
+                let (line, column) = find_line_and_column(&self.code, start);
+                let err_msg = format!("Error at {line}:{column}:\n{message}");
+                // let err_msg = match find_line_and_column(&self.code, start) {
+                //     Some((line, column)) => format!("Error at {line}:{column}:\n{message}"),
+                //     None => format!("Error occured: {message}"),
+                // };
                 ui.label(
                     RichText::new(err_msg)
                         .size(self.monospace_size * 1.5)
@@ -269,20 +270,22 @@ impl eframe::App for App {
     }
 }
 
-fn find_line_and_column(text: &str, offset: usize) -> Option<(usize, usize)> {
+fn find_line_and_column(text: &str, offset: usize) -> (usize, usize) {
     let mut current_offset = 0;
 
     for (line_num, line) in text.lines().enumerate() {
         let line_length = line.len() + 1;
         if current_offset + line_length > offset {
             let column = offset - current_offset;
-            return Some((line_num + 1, column + 1));
+            return (line_num + 1, column + 1);
         }
 
         current_offset += line_length;
     }
 
-    None
+    // Should only recurse once, at maximum
+    let (line, _column) = find_line_and_column(text, offset - 1);
+    (line + 1, 1)
 }
 
 #[derive(Logos, Debug, Clone)]
