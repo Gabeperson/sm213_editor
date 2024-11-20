@@ -24,7 +24,9 @@ jobs:
       - name: Install trunk
         run: cargo binstall trunk
       - name: Build
-        run: trunk build --release
+        run: trunk build --release --public-url $public_url
+        env: 
+          public_url: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
       - name: Upload as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
