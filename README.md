@@ -16,9 +16,14 @@ SM213 is a web-based code editor hosted [here](https://gabeperson.github.io/sm21
 - **Different color modes:** Currently supports light and dark mode. Provides the option to adjust the color theme to your system's default.
 
 ## Using the code editor
+### Usage
 Using the code editor does not require installing anything. It is a website currently deployed at [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
 
-For local development, just clone the repo using and then use `cargo run` to run the program. If you choose to run the program locally, Rust must be installed.
+### Development
+For local development, you have to do the following:
+1. Install [Rust](https://www.rust-lang.org/) if you have not installed it already.
+2. Install [Trunk](https://github.com/trunk-rs/trunk) (check their website [here](https://trunkrs.dev/guide/getting-started/installation.html) for installation instructions).
+3. Run `trunk serve --open` to run it
 
 ## Contributing
 Please report any issues or make any feature requests using GitHub issues on this repository. If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a pull request. 
