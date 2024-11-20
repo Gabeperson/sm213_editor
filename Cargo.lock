@@ -2029,7 +2029,7 @@ dependencies = [
 [[package]]
 name = "parser"
 version = "0.1.0"
-source = "git+https://github.com/gabeperson/parser.git#51c2fb3490d80bf5c45ab2f50c7d371e30ddb4c5"
+source = "git+https://github.com/gabeperson/parser.git#7b1f3db1100a183bcc1b2477ad5e6f239bc7598c"
 
 [[package]]
 name = "paste"
@@ -2404,7 +2404,7 @@ dependencies = [
 [[package]]
 name = "sm213_parser"
 version = "0.1.0"
-source = "git+https://github.com/Gabeperson/sm213_parser.git#c04454f9313119a2c48acf803a96674bd5555280"
+source = "git+https://github.com/Gabeperson/sm213_parser.git#78e7aabe57bd78adaa58679343ed12ed05af57d9"
 dependencies = [
  "parser",
 ]
