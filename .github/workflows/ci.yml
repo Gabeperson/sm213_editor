@@ -13,8 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+      - uses: cargo-bins/cargo-binstall@main
       - name: Install trunk
-        run: cargo install trunk
+        run: cargo binstall trunk
       - name: Build
         run: trunk build --release
       - name: Upload as artifact
