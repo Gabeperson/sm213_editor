@@ -15,13 +15,13 @@ SM213 is a web-based code editor hosted [here](https://gabeperson.github.io/sm21
 - **Browser-based:** You don't need to install anything to run. Just go to [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/) and start writing.
 - **Different color modes:** Currently supports light and dark mode. Provides the option to adjust the color theme to your system's default.
 
-## Installation and use
+## Using the code editor
 Using the code editor does not require installing anything. It is a website currently deployed at [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
 
-For development, just clone the repo using and then use `cargo run` to run. Rust must be installed for development purposes.
+For local development, just clone the repo using and then use `cargo run` to run the program. If you choose to run the program locally, Rust must be installed.
 
-# Contributors
-<p align="center"><a href="https://github.com/Gabeperson/sm213_editor/graphs/contributors"><img src="https://contrib.rocks/image?repo=Gabeperson/sm213_editor" /></a></p>
+## Contributing
+Please report any issues or make any feature requests using GitHub issues on this repository. If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a pull request. 
 
-# License
-This work is licensed under the [MIT license](https://github.com/Gabeperson/sm213_editor/).
+## License
+This work is licensed under the [MIT license](https://github.com/Gabeperson/sm213_editor/LICENSE-MIT).
