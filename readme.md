@@ -17,7 +17,7 @@ sm213_editor is a web-based code editor for the SM213 language. It is hosted [he
 
 ## Using the code editor
 ### Usage
-Using the code editor does not require installing anything. It is a website currently deployed at [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
+Goto [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
 
 ### Development
 For local development, you have to do the following:
@@ -29,7 +29,6 @@ For local development, you have to do the following:
 6. Navigate to `localhost:5173`.
 
 ## Contributing
-Please report any issues or make any feature requests using GitHub issues on this repository. If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a pull request. 
-
+Please report any issues or feature requests using GitHub issues on this repository. If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a PR.
 ## License
 This work is licensed under the [MIT license](https://github.com/Gabeperson/sm213_editor/LICENSE-MIT).
