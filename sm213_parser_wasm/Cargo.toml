@@ -1,0 +1,14 @@
+[package]
+name = "sm213_parser_wasm"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+sm213_parser = { git = "https://github.com/Gabeperson/sm213_parser", version = "0.1.0" }
+wasm-bindgen = "0.2.95"
+web-sys = { version = "0.3.72", features = ["Document", "Element", "HtmlElement", "Window", "Node"] }
+
+
