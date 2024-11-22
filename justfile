@@ -7,6 +7,9 @@ build:
     cd {{wasm_dir}} && wasm-pack build --target web
 buildrelease:
     cd {{wasm_dir}} && wasm-pack build --target web --release
+    -mkdir {{frontend_dir}}/src/wasm
+    rm {{wasm_dir}}/pkg/package.json
+    cp {{wasm_dir}}/pkg/* {{frontend_dir}}/src/wasm/
     cd {{frontend_dir}} && npm run build
     cp {{frontend_dir}}/dist . -r
 copy:
