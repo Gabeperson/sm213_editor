@@ -15,7 +15,8 @@ It provides live error reporting as you code.
 ## Features
 - **Live error reporting:** Errors are displayed in real time. Error messages are descritive so that you can find the error easily.
 - **Browser-based:** You don't need to install anything to run. Just go to [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/) and start writing.
-- **Different color modes:** Currently supports light and dark mode.
+- **Light mode and Dark mode:** Pretty self explanatory.
+- **Code Formatting (Experimental):** Reformats your code in a nice-to-view way.
 
 ## Using the code editor
 Goto [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
