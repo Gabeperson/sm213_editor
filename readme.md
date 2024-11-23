@@ -1,4 +1,4 @@
-<h1 align="center">SM213 editor</h1>
+<h1 align="center">SM213 Editor</h1>
 
 <p align="center">
   <img alt="badge-lastcommit" src="https://img.shields.io/github/last-commit/Gabeperson/sm213_editor?style=for-the-badge">
