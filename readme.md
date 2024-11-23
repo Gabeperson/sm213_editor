@@ -8,25 +8,26 @@
   <img alt="badge-codesize" src="https://img.shields.io/github/languages/code-size/Gabeperson/sm213_editor?style=for-the-badge">
 </p>
 
-SM213 is a web-based code editor hosted [here](https://gabeperson.github.io/sm213_editor/). It uses SM213 parser to provide live syntactic error reporting as you code.
+sm213_editor is a web-based code editor for the SM213 language. It is hosted [here](https://gabeperson.github.io/sm213_editor/). It provides live syntactic error reporting as you code, powered by [sm213_parser](https://github.com/gabeperson/sm213_parser).
 
 ## Features
-- **Live error reporting:** Potential syntactic errors in your command are displayed as you code so that you can catch mistakes as soon as they happen. Error messages are descritive so that you can find the error easily.
+- **Live error reporting:** Syntax errors are displayed in real time. Error messages are descritive so that you can find the error easily.
 - **Browser-based:** You don't need to install anything to run. Just go to [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/) and start writing.
-- **Different color modes:** Currently supports light and dark mode. Provides the option to adjust the color theme to your system's default.
+- **Different color modes:** Currently supports light and dark mode.
 
 ## Using the code editor
-### Usage
-Using the code editor does not require installing anything. It is a website currently deployed at [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
+Goto [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
 
-### Development
+## Development
 For local development, you have to do the following:
-1. Install [Rust](https://www.rust-lang.org/) if you have not installed it already.
-2. Install [Trunk](https://github.com/trunk-rs/trunk) (check their website [here](https://trunkrs.dev/guide/getting-started/installation.html) for installation instructions).
-3. Run `trunk serve --open` to run it
+1. Install [Rust](https://www.rust-lang.org/).
+2. Install [Node](https://nodejs.org/en).
+3. Install [Just](https://github.com/casey/just).
+4. Install [Wasm-pack](https://github.com/rustwasm/wasm-pack).
+5. From the root directory, run `just watchwasm` in one terminal and `just watchvite` in another.
+6. Navigate to `localhost:5173`.
 
 ## Contributing
-Please report any issues or make any feature requests using GitHub issues on this repository. If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a pull request. 
-
+Please report any issues or feature requests using GitHub issues on this repository. If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a PR.
 ## License
 This work is licensed under the [MIT license](https://github.com/Gabeperson/sm213_editor/LICENSE-MIT).
