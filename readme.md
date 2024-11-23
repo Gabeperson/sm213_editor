@@ -11,7 +11,7 @@
 sm213_editor is a web-based code editor for the SM213 language. It is hosted [here](https://gabeperson.github.io/sm213_editor/). It provides live syntactic error reporting as you code, powered by [sm213_parser](https://github.com/gabeperson/sm213_parser).
 
 ## Features
-- **Live error reporting:** Syntax errors are displayed in real time. Error messages are descritive so that you can find the error easily.
+- **Live error reporting:** Errors are displayed in real time. Error messages are descritive so that you can find the error easily.
 - **Browser-based:** You don't need to install anything to run. Just go to [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/) and start writing.
 - **Different color modes:** Currently supports light and dark mode.
 
