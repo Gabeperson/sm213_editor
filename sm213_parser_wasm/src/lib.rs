@@ -130,3 +130,11 @@ pub fn parse_sm213(s: &str) -> ErrDiagnostics {
         semantic_errors: diagnostics,
     }
 }
+#[wasm_bindgen]
+pub fn reformat(s: &str) -> Option<String> {
+    let program = match sm213_parser::parse(s) {
+        Ok(p) => p,
+        Err(_) => return None,
+    };
+    Some(program.to_string())
+}

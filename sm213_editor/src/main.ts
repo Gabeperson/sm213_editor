@@ -356,3 +356,22 @@ function open_file() {
     input.click();
 }
 (window as any).open_file = open_file;
+
+function format() {
+    let text = model.getValue();
+    let formatted = parserBackend.reformat(text);
+    if (formatted == undefined) {
+        alert("Program must have no syntax errors to reformat!");
+        return;
+    }
+    editor.pushUndoStop();
+    editor.executeEdits("reformat", [
+        {
+            range: model.getFullModelRange(), // full range
+            text: formatted, // target value here
+        },
+    ]);
+    editor.pushUndoStop();
+}
+
+(window as any).format = format;
