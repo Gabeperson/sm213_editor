@@ -28,6 +28,10 @@ For local development, you have to do the following:
 6. Navigate to `localhost:5173`.
 
 ## Contributing
-Please report any issues or feature requests using GitHub issues on this repository. If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a PR.
+Contributions are welcome!
+
+Please report any issues or feature requests using GitHub issues on this repository.
+
+If there is an issue that you would like to work on, feel free to leave a comment in the corresponding GitHub issue and then make a PR.
 ## License
-This work is licensed under the [MIT license](https://github.com/Gabeperson/sm213_editor/LICENSE-MIT).
+This work is licensed under the [MIT License](https://github.com/Gabeperson/sm213_editor/blob/main/LICENSE-MIT).
