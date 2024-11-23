@@ -32,7 +32,7 @@ For local development, you have to do the following:
 ## Architecture
 The frontend, located in the `sm213_editor` subdirectory in the repo, is made in HTML, CSS, and Typescript with no frameworks. It leverages [Monaco Editor](https://github.com/microsoft/monaco-editor) for the editor ui.
 
-The [parser](https://github.com/gabeperson/sm213_parser) is made in rust with a [parser combinator framework](https://github.com/Gabeperson/parser) designed for returning great errors. (I might implement a ground up parser in the future for even better errors)
+The [parser](https://github.com/gabeperson/sm213_parser) is made in rust with a [custom parser combinator framework](https://github.com/Gabeperson/parser) designed for returning great errors. (I might implement a ground up parser in the future for even better errors)
 
 The frontend communicates with the backend (compiled to [wasm](https://webassembly.org/)) using a lightweight js <-> wasm bridge, located in the `sm213_parser_wasm` subdirectory in this repo.
 
