@@ -220,9 +220,7 @@ monaco.editor.defineTheme("sm213-dark", {
         { token: "invalid", foreground: "ff0000" },
         { token: "", foreground: "#dddddd" },
     ],
-    colors: {
-        "editor.foreground": "#000000",
-    },
+    colors: {},
 });
 
 const dark_background = "1e1e1e";
@@ -232,7 +230,7 @@ monaco.editor.defineTheme("sm213-light", {
     inherit: false,
     rules: [
         { token: "sm213.register", foreground: "f74ff2" },
-        { token: "sm213.label", foreground: "444444" },
+        { token: "sm213.label", foreground: "509600" },
         { token: "sm213.instruction", foreground: "0000ff" },
         { token: "sm213.punct", foreground: "0daa02" },
         { token: "sm213.hex", foreground: "0daa02" },
@@ -268,7 +266,6 @@ theme = saved_theme ?? theme;
 
 const right = document.getElementById("right")!;
 function setTheme(t: "sm213-dark" | "sm213-light") {
-    console.log("ran");
     if (t == "sm213-dark") {
         theme = "sm213-dark";
         right.style.backgroundColor = `#${dark_background}`;
@@ -321,3 +318,41 @@ function setErrorPanelErrors(errors: ErrorPanelError[]) {
         errorpanel.appendChild(err_div);
     }
 }
+
+function download() {
+    // https://stackoverflow.com/questions/3749231/download-file-using-javascript-jquery
+    let text = model.getValue();
+    const url = window.URL.createObjectURL(
+        new Blob([text], { type: "text/plain" }),
+    );
+    const elem = document.createElement("a");
+    elem.style.display = "none";
+    elem.href = url;
+    elem.download = "program.s";
+    document.body.appendChild(elem);
+    elem.click();
+    document.body.removeChild(elem);
+    window.URL.revokeObjectURL(url);
+}
+(window as any).download = download;
+
+function open_file() {
+    // https://stackoverflow.com/questions/16215771/how-to-open-select-file-dialog-via-js
+
+    let input = document.createElement("input");
+    input.type = "file";
+    input.onchange = (e: any) => {
+        let file = e.target.files[0];
+        let reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = (readerEvent) => {
+            let content = readerEvent.target!.result as string | null;
+            if (content != null) {
+                model.setValue(content);
+            }
+        };
+    };
+
+    input.click();
+}
+(window as any).open_file = open_file;
