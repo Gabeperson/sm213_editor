@@ -8,7 +8,7 @@
   <img alt="badge-codesize" src="https://img.shields.io/github/languages/code-size/Gabeperson/sm213_editor?style=for-the-badge">
 </p>
 
-sm213_editor is a web-based code editor for the SM213 language. It is hosted [here](https://gabeperson.github.io/sm213_editor/). It provides live syntactic error reporting as you code, powered by [sm213_parser](https://github.com/gabeperson/sm213_parser).
+sm213_editor is a web-based code editor for the SM213 language. It is hosted [here](https://gabeperson.github.io/sm213_editor/). It provides live error reporting as you code, powered by [sm213_parser](https://github.com/gabeperson/sm213_parser).
 
 ## Features
 - **Live error reporting:** Errors are displayed in real time. Error messages are descritive so that you can find the error easily.
