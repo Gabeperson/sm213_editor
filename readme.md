@@ -16,10 +16,9 @@ sm213_editor is a web-based code editor for the SM213 language. It is hosted [he
 - **Different color modes:** Currently supports light and dark mode.
 
 ## Using the code editor
-### Usage
 Goto [https://gabeperson.github.io/sm213_editor/](https://gabeperson.github.io/sm213_editor/).
 
-### Development
+## Development
 For local development, you have to do the following:
 1. Install [Rust](https://www.rust-lang.org/).
 2. Install [Node](https://nodejs.org/en).
