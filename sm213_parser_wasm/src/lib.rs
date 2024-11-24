@@ -1,3 +1,4 @@
+use sm213_parser::parser;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -19,7 +20,7 @@ impl From<sm213_parser::Severity> for Severity {
 #[wasm_bindgen]
 #[derive(Debug, Clone)]
 pub struct ParseError {
-    inner: sm213_parser::ParseError,
+    inner: parser::ParseError,
 }
 
 #[wasm_bindgen]
@@ -29,8 +30,8 @@ impl ParseError {
     }
     pub fn span(&self) -> Span {
         match self.inner.span_or_pos {
-            sm213_parser::SpanOrPos::Span(sm213_parser::Span { start, end }) => Span { start, end },
-            sm213_parser::SpanOrPos::Pos(p) => Span {
+            parser::SpanOrPos::Span(parser::prelude::Span { start, end }) => Span { start, end },
+            parser::SpanOrPos::Pos(p) => Span {
                 start: p,
                 end: p + 1,
             },
@@ -70,7 +71,7 @@ impl SemanticError {
         self.inner.message.clone()
     }
     pub fn span(&self) -> Span {
-        let sm213_parser::Span { start, end } = self.inner.span;
+        let parser::prelude::Span { start, end } = self.inner.span;
         Span { start, end }
     }
     pub fn severity(&self) -> Severity {
@@ -81,7 +82,7 @@ impl SemanticError {
         self.inner.related.as_ref().map(|(message, span)| Related {
             message: message.clone(),
             span: {
-                let sm213_parser::Span { start, end } = span;
+                let parser::prelude::Span { start, end } = span;
                 Span {
                     start: *start,
                     end: *end,
