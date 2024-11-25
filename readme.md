@@ -35,6 +35,11 @@ The [parser](https://github.com/gabeperson/sm213_parser) is made in rust with a 
 
 The frontend communicates with the backend (compiled to [wasm](https://webassembly.org/)) using a lightweight js <-> wasm bridge, located in the `sm213_parser_wasm` subdirectory in this repo.
 
+## Future Goals (approximately in order)
+- Instruction overwrite & unaligned instruction detection
+- "Run" button in editor to actually run the code directly without having to copy it over
+- Debugging support
+
 ## Contributing
 Contributions are welcome!
 
