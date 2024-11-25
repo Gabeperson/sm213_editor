@@ -4,13 +4,15 @@ permissions:
   contents: read
   pages: write
   id-token: write
-
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    paths:
+      - "sm213_editor/**"
+      - "sm213_parser_wasm/**"
+      - "justfile"
   workflow_dispatch:
+
 
 jobs:
   build:
