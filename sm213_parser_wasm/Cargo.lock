@@ -61,7 +61,7 @@ dependencies = [
 [[package]]
 name = "sm213_parser"
 version = "0.1.0"
-source = "git+https://github.com/Gabeperson/sm213_parser#80f828b8c6c6024bc87eeefc777380874db64194"
+source = "git+https://github.com/Gabeperson/sm213_parser#1e74e7b9e6157bc1279fc6dff31de0004651273d"
 dependencies = [
  "parser",
 ]

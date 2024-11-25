@@ -121,7 +121,9 @@ pub fn parse_sm213(s: &str) -> ErrDiagnostics {
         }
     };
 
-    let diagnostics = sm213_parser::second_pass(&program)
+    let (diagnostics, _second_pass) = sm213_parser::second_pass(&program);
+
+    let diagnostics = diagnostics
         .into_iter()
         .map(|diagnostic| SemanticError { inner: diagnostic })
         .collect::<Vec<_>>();
